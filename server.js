@@ -21,7 +21,9 @@ app.use(methodOverride('_method'))
 app.get('/', (req, res) => res.redirect('/products'))
 app.get('/products/seed', productCtrl.seed)
 app.get('/products', productCtrl.index)
-
+app.get('/products/new', productCtrl.new)
+app.delete('/products/:id', productCtrl.delete)
+app.post('/products', productCtrl.create )
 
 
 

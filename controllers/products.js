@@ -1,7 +1,15 @@
 import Product from '../models/product.js'
 import seedData from '../models/seedData.js'
+const mongooseImg = '/assets/mongoose.jpg'
 
-export { seed, index }
+export { 
+    seed, 
+    index, 
+    newMongoose as new,
+    create,
+    deleteMongoose as delete,
+
+}
 
 const seed = async(req, res) => {
     await Product.deleteMany({})
@@ -10,7 +18,23 @@ const seed = async(req, res) => {
 }
 
 const index = async(req, res) => {
-        const products = await Product.find({})
-        res.render('index', { products, title: 'Main' })
+    const products = await Product.find({})
+    res.render('index', { products, title: 'Main' })
 }
 
+const newMongoose = async(req, res) => {
+    res.render('new', { title: 'New'})
+}
+
+const create = async(req, res) => {
+    req.body.price = parseInt(req.body.price)
+    req.body.qty = parseInt(req.body.price)
+    req.body.img = mongooseImg
+    await Product.create(req.body)
+    res.redirect('/products')
+}
+
+const deleteMongoose = async(req, res) => {
+    await Product.findByIdAndDelete(req.params._id)
+    res.redirect('/products')
+}
