@@ -6,7 +6,9 @@
         <h1><%=product.name%></h1>
         <p><%= product.price %></p>
         <img src="<%=product.img%>" alt="photo of <%=product.name%>">
-        <p><%= product.description %></p>
+        <div class="desc-container">
+            <p><%= product.description %></p>
+        </div>
         <div class="btn-container">
             <a class="button button-clear" href="/products/<%=product._id%>/edit">Edit</a>
             <a class="button button-clear" href="/products">Back</a>
