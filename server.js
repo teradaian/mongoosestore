@@ -24,7 +24,7 @@ app.get('/products', productCtrl.index)
 app.get('/products/new', productCtrl.new)
 app.delete('/products/:id', productCtrl.delete)
 app.post('/products', productCtrl.create )
-
+app.get('/products/:id', productCtrl.show)
 
 
 
