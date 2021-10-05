@@ -56,7 +56,7 @@ const update = async(req, res) => {
     req.body.price = parseInt(req.body.price)
     req.body.qty = parseInt(req.body.qty)
     await Product.findOneAndUpdate({_id: req.params.id}, req.body, { new: true })
-    res.redirect('/products')
+    res.redirect(`/products/${req.params.id}`)
 }
 
 const buy = async(req, res) => {
