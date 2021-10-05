@@ -10,7 +10,8 @@ export {
     deleteMongoose as delete,
     show,
     edit,
-    update
+    update,
+    buy
 }
 
 const seed = async(req, res) => {
@@ -53,7 +54,12 @@ const edit = async(req, res) => {
 
 const update = async(req, res) => {
     req.body.price = parseInt(req.body.price)
-    req.body.qty = parseInt(req.body.price)
+    req.body.qty = parseInt(req.body.qty)
     await Product.findOneAndUpdate({_id: req.params.id}, req.body, { new: true })
     res.redirect('/products')
+}
+
+const buy = async(req, res) => {
+    await Product.findOneAndUpdate({_id: req.params.id}, {qty: parseInt(req.body.qty-1)}, { new: true })
+    res.redirect(`/products/${req.params.id}`)
 }

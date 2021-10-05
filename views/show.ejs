@@ -9,6 +9,15 @@
         <div class="desc-container">
             <p><%= product.description %></p>
         </div>
+
+        <% if (product.qty) { %>
+        <form action="/products/<%=product._id%>/buy?_method=PUT" method="POST">
+            <input type="number" name="qty" value="<%=product.qty%>" hidden>
+            <button type="submit">Adopt</button>
+        </form>
+        <% } else { %>
+        <p>Adopted</p>
+        <% } %>
         <div class="btn-container">
             <a class="button button-clear" href="/products/<%=product._id%>/edit">Edit</a>
             <a class="button button-clear" href="/products">Back</a>
