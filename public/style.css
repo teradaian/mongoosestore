@@ -16,6 +16,8 @@ body{
 
 main {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
 }
 
@@ -27,7 +29,6 @@ div.container {
     width: 30%;
     background-color: whitesmoke;
     border: 2px solid oldlace;
-    margin: 0 1rem;
     padding: 2rem;
 }
 
@@ -60,3 +61,16 @@ div.desc-container {
     background-color: white;
     padding: 1rem 1rem 0 1rem;
 }
+
+
+@media only screen and (max-width: 600px) {
+    div.btn-container {
+        flex-direction: column;
+        margin-bottom: -2rem;
+    }
+
+    div.container {
+        width: 90%;
+    }
+}
+
