@@ -1,0 +1,17 @@
+<%- include('./partials/header') %>
+
+<form action="/products" method="POST">
+    <fieldset>
+      <label for="nameField">Name</label>
+      <input type="text" name="name" value="<%=product.name%>"id="nameField">
+      <label for="priceField">Price</label>
+      <input type="number" name="price" value="<%=product.price%>" id="priceField">
+      <label for="wtyField">Quantity</label>
+      <input type="number" name="qty" value="<%=product.qty%>" id="qtyField">
+      <label for="commentField">Description</label>
+      <textarea value="<%=product.description%>" name="description" id="commentField"></textarea>
+    </fieldset>
+    <button type="submit">Submit</button>
+  </form>
+
+<%- include('./partials/footer') %>

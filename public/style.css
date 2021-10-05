@@ -1,3 +1,7 @@
 img {
     width: 300px;
 }
+
+.btn-container {
+    display: flex;
+}

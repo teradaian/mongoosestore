@@ -8,7 +8,9 @@ export {
     newMongoose as new,
     create,
     deleteMongoose as delete,
-    show
+    show,
+    edit,
+    update
 }
 
 const seed = async(req, res) => {
@@ -41,6 +43,17 @@ const deleteMongoose = async(req, res) => {
 
 const show = async(req, res) => {
     const product = await Product.findById(req.params.id)
-    console.log(product)
     res.render('show', { product, title: product.name })
+}
+
+const edit = async(req, res) => {
+    const product = await Product.findById(req.params.id)
+    res.render('edit', { product, title: `Edit ${product.name}`})
+}
+
+const update = async(req, res) => {
+    req.body.price = parseInt(req.body.price)
+    req.body.qty = parseInt(req.body.price)
+    await Product.create(req.body)
+    res.redirect('/products')
 }

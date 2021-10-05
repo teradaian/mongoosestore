@@ -23,7 +23,9 @@ app.get('/products/seed', productCtrl.seed)
 app.get('/products', productCtrl.index)
 app.get('/products/new', productCtrl.new)
 app.delete('/products/:id', productCtrl.delete)
-app.post('/products', productCtrl.create )
+app.put('/products', productCtrl.update)
+app.post('/products', productCtrl.create)
+app.get('/products/:id/edit', productCtrl.edit)
 app.get('/products/:id', productCtrl.show)
 
 

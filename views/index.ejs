@@ -6,10 +6,12 @@
         <p><%= product.name %></p>
         <p><%= product.price %></p>
         <img src="<%=product.img%>" alt="photo of <%=product.name%>">
-        <a href="/products/<%=product._id%>">Details</a>
-        <form action="/products/<%=product._id%>?_method=delete" method="POST">
-            <button type="submit">Delete</button>
-        </form>
+        <div class="btn-container">
+            <a class="button button-clear" href="/products/<%=product._id%>">Details</a>
+            <form action="/products/<%=product._id%>?_method=delete" method="POST">
+                <button class="button button-outline" type="submit">Delete</button>
+            </form>
+        </div>
     <% }) %>
 
 <%- include('./partials/footer') %>
