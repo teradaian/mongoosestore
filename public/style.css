@@ -75,5 +75,15 @@ div.desc-container {
     div.container {
         width: 90%;
     }
+
+    #add-btn {
+        margin-top: .2rem;
+        margin-right: 1rem;
+    }
+
+    #title-header {
+        margin-top: .5rem;
+        font-size: x-large;
+    }
 }
 
