@@ -47,7 +47,7 @@ const newMongoose = async(req, res) => {
 const create = async(req, res) => {
     try {
         req.body.price = parseInt(req.body.price)
-        req.body.qty = parseInt(req.body.price)
+        req.body.qty = parseInt(req.body.qty)
         req.body.img = mongooseImg
         await Product.create(req.body)
         res.redirect('/products')
