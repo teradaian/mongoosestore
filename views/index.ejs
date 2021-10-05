@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><% title %> | Mongoose Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <title> <% title %> | Mongoose Shop</title>
 </head>
 <body>
-    
+    <h1>Mongoose-R-Us</h1>
+    <% products.forEach(product => { %>
+        <p><%= product.name %></p>
+        <p><%= product.price %></p>
+        <img src="<%=product.img%>" alt="photo of <%=product.name%>">
+    <% }) %>
 </body>
 </html>

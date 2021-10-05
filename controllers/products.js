@@ -1,7 +1,7 @@
-import Product from '../models/product'
-import seedData from '../models/seedData'
+import Product from '../models/product.js'
+import seedData from '../models/seedData.js'
 
-export { seed }
+export { seed, index }
 
 const seed = async(req, res) => {
     await Product.deleteMany({})
@@ -10,12 +10,7 @@ const seed = async(req, res) => {
 }
 
 const index = async(req, res) => {
-    try{ 
-        await Product.find({})
-        res.render('index', { title: 'Main' })
-    } catch (err) {
-        console.log(err)
-        res.redirect('/products')
-    }
+        const products = await Product.find({})
+        res.render('index', { products, title: 'Main' })
 }
 
