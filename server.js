@@ -12,7 +12,7 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 // seed route
-
+app.get('/', (req, res) => res.redirect('/products'))
 app.get('/products/seed', productCtrl.seed)
 
 
