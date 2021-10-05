@@ -6,60 +6,106 @@ export {
     seed, 
     index, 
     newMongoose as new,
-    create,
     deleteMongoose as delete,
-    show,
     edit,
+    create,
     update,
+    show,
     buy
 }
 
 const seed = async(req, res) => {
-    await Product.deleteMany({})
-    await Product.create(seedData)
-    res.redirect('/products')
+    try {
+        await Product.deleteMany({})
+        await Product.create(seedData)
+        res.redirect('/products')
+    } catch(err) {
+        console.log(err)
+        res.redirect('/products')
+    }
 }
 
 const index = async(req, res) => {
-    const products = await Product.find({})
-    res.render('index', { products, title: 'Main' })
+    try {
+        const products = await Product.find({})
+        res.render('index', { products, title: 'Main' })
+    } catch(err) {
+        console.log(err)
+        res.redirect('/products')
+    }
 }
 
 const newMongoose = async(req, res) => {
-    res.render('new', { title: 'New'})
+    try {
+        res.render('new', { title: 'New'})
+    } catch(err) {
+        console.log(err)
+        res.redirect('/products')
+    }
 }
 
 const create = async(req, res) => {
-    req.body.price = parseInt(req.body.price)
-    req.body.qty = parseInt(req.body.price)
-    req.body.img = mongooseImg
-    await Product.create(req.body)
-    res.redirect('/products')
+    try {
+        req.body.price = parseInt(req.body.price)
+        req.body.qty = parseInt(req.body.price)
+        req.body.img = mongooseImg
+        await Product.create(req.body)
+        res.redirect('/products')
+    } catch(err) {
+        console.log(err)
+        res.redirect('/products')
+    }
 }
 
 const deleteMongoose = async(req, res) => {
-    await Product.findByIdAndDelete(req.params.id)
-    res.redirect('/products')
+    try {
+        await Product.findByIdAndDelete(req.params.id)
+        res.redirect('/products')
+    } catch(err){
+        console.log(err)
+        res.redirect('/products')
+    }
 }
 
 const show = async(req, res) => {
-    const product = await Product.findById(req.params.id)
-    res.render('show', { product, title: product.name })
+    try {
+        const product = await Product.findById(req.params.id)
+        res.render('show', { product, title: product.name })
+    } catch(err) {
+        console.log(err)
+        res.redirect('/products')
+    }
 }
 
 const edit = async(req, res) => {
-    const product = await Product.findById(req.params.id)
-    res.render('edit', { product, title: `Edit ${product.name}`})
+    try {
+        const product = await Product.findById(req.params.id)
+        res.render('edit', { product, title: `Edit ${product.name}`})
+    } catch(err) {
+        console.log(err)
+        res.redirect('/products')
+    }
+
 }
 
 const update = async(req, res) => {
-    req.body.price = parseInt(req.body.price)
-    req.body.qty = parseInt(req.body.qty)
-    await Product.findOneAndUpdate({_id: req.params.id}, req.body, { new: true })
-    res.redirect(`/products/${req.params.id}`)
+    try {
+        req.body.price = parseInt(req.body.price)
+        req.body.qty = parseInt(req.body.qty)
+        await Product.findOneAndUpdate({_id: req.params.id}, req.body, { new: true })
+        res.redirect(`/products/${req.params.id}`)
+    } catch(err) {
+        console.log(err)
+        res.redirect('/products')
+    }
 }
 
 const buy = async(req, res) => {
-    await Product.findOneAndUpdate({_id: req.params.id}, {qty: parseInt(req.body.qty-1)}, { new: true })
-    res.redirect(`/products/${req.params.id}`)
+    try {
+        await Product.findOneAndUpdate({_id: req.params.id}, {qty: parseInt(req.body.qty-1)}, { new: true })
+        res.redirect(`/products/${req.params.id}`)
+    } catch(err) {
+        console.log(err)
+        res.redirect('/products')
+    }
 }
