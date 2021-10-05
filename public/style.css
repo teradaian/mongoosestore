@@ -2,6 +2,32 @@ img {
     width: 300px;
 }
 
-.btn-container {
+html, body {
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.container {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.btn-container {
+    margin-top: 1rem;
     display: flex;
 }

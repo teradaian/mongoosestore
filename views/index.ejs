@@ -2,16 +2,20 @@
 
 <body>
     <h1>Mongoose-R-Us</h1>
-    <% products.forEach(product => { %>
-        <p><%= product.name %></p>
-        <p><%= product.price %></p>
-        <img src="<%=product.img%>" alt="photo of <%=product.name%>">
-        <div class="btn-container">
-            <a class="button button-clear" href="/products/<%=product._id%>">Details</a>
-            <form action="/products/<%=product._id%>?_method=delete" method="POST">
-                <button class="button button-outline" type="submit">Delete</button>
-            </form>
-        </div>
-    <% }) %>
+    <main>
+        <% products.forEach(product => { %>
+            <div class="container">
+                <p><%= product.name %></p>
+                <p>Price: $<%= product.price %></p>
+                <a href="/products/<%=product._id%>"><img src="<%=product.img%>" alt="photo of <%=product.name%>"></a>
 
+                <div class="btn-container">
+                    <a class="button button-clear" href="/products/<%=product._id%>">Details</a>
+                    <form action="/products/<%=product._id%>?_method=delete" method="POST">
+                        <button class="button button-outline" type="submit">Delete</button>
+                    </form>
+                </div>
+            </div>
+        <% }) %>
+    </main>
 <%- include('./partials/footer') %>

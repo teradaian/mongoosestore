@@ -1,6 +1,6 @@
 <%- include('./partials/header') %>
 
-<form action="/products" method="POST">
+<form action="/products?_method=PUT" method="POST">
     <fieldset>
       <label for="nameField">Name</label>
       <input type="text" name="name" value="<%=product.name%>"id="nameField">
