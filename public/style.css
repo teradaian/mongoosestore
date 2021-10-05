@@ -31,3 +31,13 @@ div.btn-container {
     margin-top: 1rem;
     display: flex;
 }
+
+div.form-container {
+    width: 75%;
+}
+
+nav {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+}
